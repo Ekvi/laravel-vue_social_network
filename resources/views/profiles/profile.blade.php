@@ -18,7 +18,7 @@
                     <p class="text-center">
                         {{$user->profile->location}}
                     </p>
-                    
+
                     <p class="text-center">
                         @if(Auth::id() == $user->id)
                             <a href="{{route('profile.edit')}}" class="btn btn-lg btn-info">Edit your profile</a>

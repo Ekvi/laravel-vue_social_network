@@ -11,8 +11,34 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/add', function () {
+    return User::find(3)->addFriend(1);
+});
+
+Route::get('/accept', function () {
+    return User::find(1)->acceptFriend(4);
+});
+
+Route::get('/friends', function () {
+    return User::find(1)->friends();
+});
+
+Route::get('/pending', function () {
+    return User::find(1)->pendingFriendRequests();
+});
+
+Route::get('/ids', function () {
+    return User::find(1)->friendsIds();
+});
+
+Route::get('/ch', function () {
+    return User::find(5)->addFriend(3);
 });
 
 Auth::routes();
