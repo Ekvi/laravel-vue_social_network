@@ -106,7 +106,7 @@ trait Friendable
         return collect($this->pendingFriendRequests())->pluck('id')->toArray();
     }
 
-    public function pendingFriendRequstsSent()
+    public function pendingFriendRequestsSent()
     {
         $users = array();
 
@@ -121,7 +121,7 @@ trait Friendable
 
     public function pendingFriendRequestSentIds()
     {
-        return collect($this->pendingFriendRequstsSent())->pluck('id')->toArray();
+        return collect($this->pendingFriendRequestsSent())->pluck('id')->toArray();
     }
 
     public function hasPendingFriendsRequestFrom($userId)

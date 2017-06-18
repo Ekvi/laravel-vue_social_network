@@ -16,7 +16,9 @@
                     </div>
 
                     <p class="text-center">
-                        {{$user->profile->location}}
+                        @if(!empty($user->profile))
+                            {{$user->profile->location}}
+                        @endif
                     </p>
 
                     <p class="text-center">
@@ -27,6 +29,14 @@
                 </div>
             </div>
 
+            @if(Auth::id() !== $user->id)
+                <div class="panel pane-default">
+                    <div class="body">
+                        <friend :profile-user-id="{{$user->id}}"></friend>
+                    </div>
+                </div>
+            @endif
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <p class="text-center">
@@ -35,7 +45,9 @@
                 </div>
                 <div class="panel-body">
                     <p class="text-center">
-                        {{$user->profile->about}}
+                        @if(!empty($user->profile))
+                            {{$user->profile->about}}
+                        @endif
                     </p>
                 </div>
             </div>

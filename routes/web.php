@@ -41,6 +41,25 @@ Route::get('/ch', function () {
     return User::find(5)->addFriend(3);
 });
 
+Route::get('/check-relationship-status/{id}', [
+    'uses' => 'FriendShipController@check',
+    'as' => 'check'
+]);
+
+Route::get('/add-friend/{id}', [
+    'uses' => 'FriendShipController@addFriend',
+    'as' => 'addFriend'
+]);
+
+Route::get('/accept-friend/{id}', [
+    'uses' => 'FriendShipController@acceptFriend',
+    'as' => 'acceptFriend'
+]);
+
+/*Route::get('/add-friend', function() {
+    echo 'test';
+});*/
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
