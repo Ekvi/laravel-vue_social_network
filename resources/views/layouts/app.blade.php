@@ -77,6 +77,11 @@
         </nav>
 
         @yield('content')
+
+        @if(!Auth::guest())
+            <notification :id="{{Auth::id()}}"></notification>
+        @endif
+
     </div>
 
     <!-- Scripts -->

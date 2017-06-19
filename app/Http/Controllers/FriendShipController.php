@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\FriendRequestAccepted;
+use App\Notifications\NewFriendRequest;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,12 +29,20 @@ class FriendShipController extends Controller
 
     public function addFriend($id)
     {
-        return Auth::user()->addFriend($id);
+        $resp = Auth::user()->addFriend($id);
+
+        User::find($id)->notify(new NewFriendRequest(Auth::user()));
+
+        return $resp;
     }
 
     public function acceptFriend($id)
     {
-        return Auth::user()->acceptFriend($id);
+        $resp = Auth::user()->acceptFriend($id);
+
+        User::find($id)->notify(new FriendRequestAccepted(Auth::user()));
+
+        return $resp;
     }
 }
 
